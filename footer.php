@@ -73,23 +73,20 @@ if($perangkat=="Komputer atau Notebook"){
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="listbarang">List Barang</h5>
-        
+      <h3 class="card-title">Stok Barang Mau Habis / Habis</h3>
+
       </div>
       
       <section class="content">
       <div class="row">
-        <div class="col-12">
-          
-          <!-- /.card -->
-
-          <div class="card">          
-            <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-
-                <tr>
+          <div class="col-12">
+            <div class="card">
+              
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap">
+                  <thead>
+                  <tr>
                   <th>No</th>
                   <th>Id</th>
                   <th>Nama Barang</th>
@@ -97,9 +94,9 @@ if($perangkat=="Komputer atau Notebook"){
                   <th>Last Updt</th>
                   <th>Keterangan</th>
                   <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
+                  </tr>
+                  </thead>
+                  <tbody>
                 <?php 
                 include 'setting/koneksi.php';
                 $no = 1;
@@ -116,17 +113,23 @@ if($perangkat=="Komputer atau Notebook"){
                     $ket = $d['ket'];
                     if($ket=="AMAN")
                     {
-                     echo " <a class='btn btn-success'>$ket</a>";
+                     echo "<span class='badge bg-success'>$ket</span>";
                     }elseif($ket=="HABIS"){
-                      echo "<a class='btn btn-danger'>$ket</a>";
+                      echo "<span class='badge bg-danger'>$ket</span>";
                     }else{
-                      echo "<a class='btn btn-warning'>$ket</a>";
+                      echo "<span class='badge bg-warning'>$ket</span>";
                     }
                      ?></td>
                   
                   <td>
-                      <a href="pages/forms/inventory-update.php?id=<?php echo $d['id_barang']; ?>" class="fas fa-check"></a> ||
-                      <a href="proses/hapus-inventory.php?id=<?php echo $d['id_barang']; ?>" class="fas fa-trash" onclick="return confirm('Anda yakin mau menghapus item ini ?')"></a>
+                      <a href="pages/forms/inventory-update.php?id=<?php echo $d['id_barang']; ?>" class="btn btn-success btn-sm">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                          </a>
+                      <a href="proses/hapus-inventory.php?id=<?php echo $d['id_barang']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin mau menghapus item ini ?')">
+                              <i class="fas fa-trash">
+                              </i>
+                          </a>
                     </td>
                   </tr>
                   <?php 
@@ -136,14 +139,13 @@ if($perangkat=="Komputer atau Notebook"){
                 
                 </tbody>
                 </table>
+              </div>
+              <!-- /.card-body -->
             </div>
-            <!-- /.card-body -->
+            <!-- /.card -->
           </div>
-          <!-- /.card -->
         </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
+        <!-- /.row -->
     </section>
     <!-- /.content -->
       <div class="modal-footer">

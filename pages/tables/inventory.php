@@ -56,15 +56,15 @@
               <h3 class="card-title">Inventory List</h3>
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
+            <div class="card-body table-responsive p-0" style="height: 350px;">
+              <table id="example1" class="table table-bordered table-striped  text-nowrap">
                 <thead>
 
                 <tr>
                   <th>No</th>
                   <th>Nama Barang</th>
                   <th>Qty</th>
-                  <th>Harga Beli Satuan</th>
+                  <th>Harga Satuan</th>
                   <th>Harga Jual</th>
                   <th>Laba/PCS</th>
                   <th>Last Updt</th>
@@ -93,16 +93,22 @@
                    $ket = $d['ket'];
                    if($ket=="AMAN")
                    {
-                    echo " <a class='btn btn-success'>$ket</a>";
+                    echo " <span class='badge bg-success'>$ket</span>";
                    }elseif($ket=="HABIS"){
-                     echo "<a class='btn btn-danger'>$ket</a>";
+                     echo "<span class='badge bg-danger'>$ket</span>";
                    }else{
-                     echo "<a class='btn btn-warning'>$ket</a>";
+                     echo "<span class='badge bg-warning'>$ket</span>";
                    }
                     ?></td>
                     <td>
-                      <a href="../forms/inventory-update.php?id=<?php echo $d['id_barang']; ?>" class="fas fa-check"></a> ||
-                      <a href="../../proses/hapus-inventory.php?id=<?php echo $d['id_barang']; ?>" class="fas fa-trash" onclick="return confirm('Anda yakin mau menghapus item ini ?')"></a>
+                    <a href="pages/forms/inventory-update.php?id=<?php echo $d['id_barang']; ?>" class="btn btn-success btn-sm">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                          </a>
+                          <a href="proses/hapus-inventory.php?id=<?php echo $d['id_barang']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin mau menghapus item ini ?')">
+                              <i class="fas fa-trash">
+                              </i>
+                          </a>
                     </td>
                   </tr>
                   
@@ -117,7 +123,7 @@
                 <th>No</th>
                   <th>Nama Barang</th>
                   <th>Qty</th>
-                  <th>Harga Beli Satuan</th>
+                  <th>Harga Satuan</th>
                   <th>Harga Jual</th>
                   <th>Laba/PCS</th>
                   <th>Last Updt</th>
