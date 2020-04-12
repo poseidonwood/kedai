@@ -56,9 +56,9 @@
 
             <!-- Form Element sizes -->
             
-           <a href="#" class="btn btn-success " data-toggle="modal" data-target="#ltmodal" > <i class="fas fa-calendar"></i>&nbsp;List Transaksi Hari Ini</a>&nbsp;
-           <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#ltbarang1"><i class="fas fa-shopping-cart"></i>&nbsp;List Barang</a>&nbsp;
-           <a href="#" class="btn btn-info" data-toggle="modal" data-target="#ltsortir"><i class="fas fa-sort"></i>&nbsp;Sortir Berdasarkan Tanggal</a>
+           <a href="#" class="btn btn-success " data-toggle="modal" data-target="#ltmodal" > <i class="fas fa-calendar"></i>&nbsp;Today</a>&nbsp;
+           <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#ltbarang1"><i class="fas fa-shopping-cart"></i></a>&nbsp;
+           <a href="#" class="btn btn-info" data-toggle="modal" data-target="#ltsortir"><i class="fas fa-sort"></i></a>
 
           </br><hr>
             <!-- Input addon -->
