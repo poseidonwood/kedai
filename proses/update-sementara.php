@@ -20,7 +20,7 @@ if($update){
  $query_saldo = mysqli_query($koneksi,"select *from tbl_saldo");
  $fetch_saldo = mysqli_fetch_array($query_saldo);
  $saldo_awal = $fetch_saldo['total_saldo'];
- $saldo_akhir = $saldo_awal-$harga_baru;        
+ $saldo_akhir = $saldo_awal+$harga_baru-$harga_jual;        
  //simpan transaksi di log saldo
   //update saldo baru
   $update_saldo = mysqli_query($koneksi,"update tbl_saldo set total_saldo = '$saldo_akhir' where id_saldo = '1'");
