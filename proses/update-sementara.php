@@ -5,7 +5,13 @@ $id_barang = $_GET['id_barang'];
 
 $id = $_GET['id'];
 $qty = $_GET['qty_update'];
-//cari id_barang di transaksi
+//cek qty update sama atau tidak
+$q_search = mysqli_query($koneksi,"select *from sementara where id_transaksi='$id'");
+$f_search = mysqli_fetch_array($q_search);
+$f_qty = $f_search['qty'];
+if($qty==$f_qty){
+    echo"<script>alert ('Update tidak boleh sama');location.href='../pages/forms/transaksi.php?pesan=fail';</script>";
+}else{//cari id_barang di transaksi
 $cek2 = mysqli_query($koneksi,"SELECT * from inventory where id_barang ='$id_barang' ");
     $query1   =mysqli_fetch_array($cek2);
     $harga_jual= $query1['harga_jual'];
@@ -31,5 +37,6 @@ if($update){
     header("location:../pages/forms/transaksi.php?pesan=fail");
 
 
+}
 }
 ?>

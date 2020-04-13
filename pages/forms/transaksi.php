@@ -47,7 +47,7 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <div class="row">
+        <div class="row mb-10">
           <!-- left column -->
           <div class="col-md-12">
             <!-- general form elements -->
@@ -60,7 +60,7 @@
            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#ltbarang1"><i class="fas fa-shopping-cart"></i></a>&nbsp;
            <a href="#" class="btn btn-info" data-toggle="modal" data-target="#ltsortir"><i class="fas fa-sort"></i></a>
 
-          </br><hr>
+          <hr>
             <!-- Input addon -->
             <div class="card card-info">
               <div class="card-header">
