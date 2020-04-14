@@ -156,14 +156,7 @@ $(document).ready(function(){
                 $tanggal = date("Y-m-d")
                 ?>
                 <input type="hidden" class="form-control" name="id_transaksi" value="<?= $id_transaksi?>" >
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-cart-plus"></i></span>
-                  </div>
-                  <input type="text" class="form-control" id="id_barang" name="id_barang" placeholder="Kode Barang" required autofocus>
-                  <span class="input-group-text"><div id="uname_response" ></div></span>
-                  
-                </div>
+                
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-calendar"></i></span>
@@ -171,6 +164,22 @@ $(document).ready(function(){
                   <input type="date" class="form-control" name="tanggal" placeholder="Tanggal" value="<?=$tanggal?>" required >
                 </div>
 	
+                                
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-shopping-cart"></i></span>
+                  </div>
+                  <input type="text" class="form-control" id="nm_barang" name ="nm_barang" placeholder="Nama Barang" required>
+                </div>
+
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-cart-plus"></i></span>
+                  </div>
+                  <input type="text" class="form-control" id="id_barang" name="id_barang" onkeyup="autofill()" placeholder="Kode Barang" required autofocus>
+                  <span class="input-group-text"><div id="uname_response" ></div></span>
+                  
+                </div>
               <!--<div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-sort"></i></span>
@@ -197,13 +206,6 @@ $(document).ready(function(){
                  }
                  ?>
                   </select>
-                </div>
-
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-shopping-cart"></i></span>
-                  </div>
-                  <input type="text" class="form-control" id="nm_barang" name ="nm_barang" placeholder="Nama Barang" required>
                 </div>
 
                 
@@ -556,8 +558,23 @@ $(document).ready(function(){
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+<!-- auto fill nm_barang-->
+<script type="text/javascript">
+    function autofill(){
+  var id_barang=$("#id_barang").val();
+ $.ajax({
+        url : 'autofill-ajax.php',
+        data : 'id_barang='+id_barang,
+ }).done(function(data){
+ var json = data,
+ obj = JSON.parse(json);
+ $("#nm_barang").val(obj.nm_barang);
 
-
+ });
+ 
+ }
+ </script>
+ <!-- end auto fill -->
 <!-- DataTables -->
 <script src="../../plugins/datatables/jquery.dataTables.js"></script>
 <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
