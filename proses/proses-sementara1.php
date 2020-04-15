@@ -21,7 +21,7 @@ $nm_pembeli = $_POST['nm_pembeli'];
 
 
 // menyeleksi data inventory berdasarkan id / kode barang
-$data_barang = mysqli_query($koneksi,"select * from inventory where id_barang='$id_barang'");
+$data_barang = mysqli_query($koneksi,"select * from inventory where id_barang='$id_barang' or barcode='$id_barang' ");
 
 
  //mengambil stok barang
@@ -39,7 +39,7 @@ $data_barang = mysqli_query($koneksi,"select * from inventory where id_barang='$
     $cek = mysqli_num_rows($data_barang);
 
 if($cek > 0){
-    $cek2 = mysqli_query($koneksi,"SELECT *from inventory where id_barang ='$id_barang' ");
+    $cek2 = mysqli_query($koneksi,"SELECT *from inventory where id_barang ='$id_barang' or barcode='$id_barang' ");
     $query1   =mysqli_fetch_array($cek2);
     $ambil_harga_satuan= $query1['harga_beli_satuan'];
     $harga_satuan = $ambil_harga_satuan*$qty_input;
@@ -54,9 +54,9 @@ if($cek > 0){
 
     if($simpan){
           //cek saldo 
-        $query_saldo = mysqli_query($koneksi,"select *from tbl_saldo");
-        $fetch_saldo = mysqli_fetch_array($query_saldo);
-        $saldo_awal = $fetch_saldo['total_saldo'];
+       /* $query_saldo = mysqli_query($koneksi,"select *from tbl_saldo");
+       // $fetch_saldo = mysqli_fetch_array($query_saldo);
+        //$saldo_awal = $fetch_saldo['total_saldo'];
         $saldo_akhir = $harga+$saldo_awal;        
         //simpan transaksi di log saldo
         $simpan_saldo = mysqli_query($koneksi,"insert into log_saldo values(
@@ -64,10 +64,10 @@ if($cek > 0){
         
          //update saldo baru
          $update_saldo = mysqli_query($koneksi,"update tbl_saldo set total_saldo = '$saldo_akhir' where id_saldo = '1'");
-           
-        $upstok= mysqli_query($koneksi, "UPDATE inventory SET qty='$sisa',last_upt='$timestamps' WHERE id_barang='$id_barang'");                
+         */  
+        //$upstok= mysqli_query($koneksi, "UPDATE inventory SET qty='$sisa',last_upt='$timestamps' WHERE id_barang='$id_barang'");                
         
-        //cek stok apabila stok = 0 , ganti keterangan stok habis
+       /* //cek stok apabila stok = 0 , ganti keterangan stok habis
         $data_qty = mysqli_query($koneksi,"select * from inventory where id_barang='$id_barang'");
         $sto1    =mysqli_fetch_array($data_qty);
         $stok1 = $sto1['qty'];
@@ -78,11 +78,13 @@ if($cek > 0){
         }elseif($stok1<=5){
           $upstok1= mysqli_query($koneksi, "UPDATE inventory SET KET='MAU HABIS' WHERE id_barang='$id_barang'");                
            header("location:../pages/forms/transaksi.php?pesan=success");
-      }else{
+        }else{
     $upstok1= mysqli_query($koneksi, "UPDATE inventory SET KET='AMAN' WHERE id_barang='$id_barang'");                
         // mengalihkan halaman kembali ke keluar.php
         header("location:../pages/forms/transaksi.php?pesan=success");
-       }
+       }*/
+       header("location:../pages/forms/transaksi.php?pesan=success");
+
 
 }else{
 	header("location:../pages/forms/transaksi.php?pesan=unknown");

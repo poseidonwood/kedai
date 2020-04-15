@@ -13,14 +13,14 @@ $hapus=mysqli_query($koneksi,"delete from sementara where id_transaksi='$id'");
 if($hapus){
    
  //cek saldo 
- $query_saldo = mysqli_query($koneksi,"select *from tbl_saldo");
+ /*$query_saldo = mysqli_query($koneksi,"select *from tbl_saldo");
  $fetch_saldo = mysqli_fetch_array($query_saldo);
  $saldo_awal = $fetch_saldo['total_saldo'];
  $saldo_akhir = $saldo_awal-$ambil_harga;        
  //simpan transaksi di log saldo
   //update saldo baru
   $update_saldo = mysqli_query($koneksi,"update tbl_saldo set total_saldo = '$saldo_akhir' where id_saldo = '1'");
- 
+ */
    $hapus_log = mysqli_query($koneksi,"delete from log_saldo where id_transaksi='$id'");
 
 // mengalihkan halaman kembali ke index.php

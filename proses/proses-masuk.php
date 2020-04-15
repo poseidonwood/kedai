@@ -60,7 +60,7 @@ if($cek > 0){
 }else{
 
     $simpan = mysqli_query($koneksi,"insert into inventory values(
-        '$id_barang','$nm_barang','$qty','$harga_beli_satuan','$harga_beli','$harga_jual','$exp','$timestamps','')");
+        '$id_barang','','$nm_barang','$qty','$harga_beli_satuan','$harga_beli','$harga_jual','$exp','$timestamps','')");
     $simpan01 = mysqli_query($koneksi,"insert into transaksi values(
             '$timestamps','$id_transaksi','$tanggal','$jenis_transaksi','$nm_pembeli','$id_barang','$nm_barang','$qty','$harga_beli','','','$keterangan')");
          //cek saldo 

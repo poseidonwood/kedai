@@ -6,9 +6,15 @@
   <title>Kedai Bu Puji | Form Barang Keluar</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="../../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="../../plugins/toastr/toastr.min.css">
+
   <!-- DataTables -->
   <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.css">
-
+  <!--Sweet Alert-->
+  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -68,55 +74,7 @@
               </div>
               <div class="card-body">
 
-              <!-- cek pesan notifikasi -->
-                  <?php 
-                  if(isset($_GET['pesan'])){
-                    if($_GET['pesan'] == "success"){
-                      echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-                      <strong>Mantap !!</strong> Data Berhasil Disimpan
-                      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                        <span aria-hidden='true'>&times;</span>
-                      </button>
-                    </div>";
-                    }else if($_GET['pesan'] == "fail"){
-                      echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                      <strong>Gagal !!</strong> Data Gagal Disimpan
-                      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                        <span aria-hidden='true'>&times;</span>
-                      </button>
-                    </div>";
-                    }else if($_GET['pesan'] == "unknown"){
-                      echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-                      <strong>Kode Barang</strong> tidak di temukan !!
-                      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                        <span aria-hidden='true'>&times;</span>
-                      </button>
-                    </div>";
-                    }else if($_GET['pesan'] == "overstock"){
-                      echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-                      <strong>Qty </strong> lebih besar dari inventory !! !!
-                      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                        <span aria-hidden='true'>&times;</span>
-                      </button>
-                    </div>";
-                    }else if($_GET['pesan'] == "success-hapus"){
-                      echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-                      <strong>Hapus </strong> data sukses !!
-                      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                        <span aria-hidden='true'>&times;</span>
-                      </button>
-                    </div>";
-                    }else if($_GET['pesan'] == "gagal-hapus"){
-                      echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-                      <strong>Gagal  </strong> hapus data !!
-                      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                        <span aria-hidden='true'>&times;</span>
-                      </button>
-                    </div>";
-                    }
-                  }
-                  ?>
-                
+              
                 <h4></h4>
                 
                 <div class="card-body table-responsive style="height: 350px;">
@@ -151,6 +109,7 @@
                   <button type="submit" name="tambah" class="input-group-text btn bg-info"><i class="fa fa-arrow-circle-right fa-lg"></i></button>
                  <!-- <span class="input-group-text bg-success"><button type="submit" name="tambah" class="btn btn-success"></button></span>-->
                 </div>
+             
               <!--  <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -194,9 +153,24 @@
                 <div class="input-group mb-3">
                   
                  <!-- <button type="submit" name="tambah" class="btn btn-success"><span class="fas fa-plus"></span></button>&nbsp;-->
+                 </form>
+                 <form method="post" action="../../proses/proses-sementara-final.php" >
+                <div class="input-group mb-3 ">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text "><i class="fas fa-users"></i></span>
+                  </div>
+                  <input type="text" class="form-control" id="id_barang" name ="nm_pembeli1" placeholder="Nama Pembeli" required>
+                  <button type="submit" name="save" class="input-group-text btn bg-success"><i class="fas fa-save"></i>&nbsp;FINISH </button>
+                 <!-- <span class="input-group-text bg-success"><button type="submit" name="tambah" class="btn btn-success"></button></span>-->
+                </div>
+
+
+               </form>
                 </div>
               
-                </form>
+                
+               
+
               <table id="example1" class="table table-bordered table-striped  text-nowrap">
                 <thead>
                 <tr>
@@ -224,7 +198,7 @@
                         $s_harga = $d['harga'];
                         $s_sub = $s_harga;
                         $s_total += $s_sub;
-                        $q_harga = mysqli_query($koneksi,"select * from inventory where id_barang='$s_id'");
+                        $q_harga = mysqli_query($koneksi,"select * from inventory where id_barang='$s_id' or barcode ='$s_id'");
                         $f_harga = mysqli_fetch_array($q_harga);
                         $f_harga_1 = $f_harga['harga_jual'];
                         echo "
@@ -261,19 +235,7 @@
                 
                 </tbody>    
              </table><br>
-              <form method="post" action="../../proses/proses-sementara-final.php" >
-                <div class="input-group mb-3 ">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text "><i class="fas fa-users"></i></span>
-                  </div>
-                  <input type="text" class="form-control" id="id_barang" name ="nm_pembeli1" placeholder="Nama Pembeli" required>
-                  <button type="submit" name="save" class="input-group-text btn bg-success"><i class="fas fa-save"> SELESAI</i> </button>
-                 <!-- <span class="input-group-text bg-success"><button type="submit" name="tambah" class="btn btn-success"></button></span>-->
-                </div>
-
-
-               </form>
-
+              
             </div>
 
               <!-- /.card-body -->
@@ -506,8 +468,8 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
-
+<!--Sweet Alert2 -->
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 <!-- DataTables -->
 <script src="../../plugins/datatables/jquery.dataTables.js"></script>
 <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
@@ -517,6 +479,156 @@
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- bs-custom-file-input -->
 <script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="../../plugins/sweetalert2/sweetalert2.min.js"></script>
+<!-- cek pesan notifikasi -->
+<?php 
+                  if(isset($_GET['pesan'])){
+                    if($_GET['pesan'] == "success"){
+                      echo "<script type='text/javascript'>
+                      $(function() {
+                       
+                        const Toast = Swal.mixin({
+                          toast: true,
+                          position: 'top-end',
+                          showConfirmButton: false,
+                          timer: 3000,
+                          timerProgressBar: true,
+                          onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                          }
+                        });
+                    
+                       
+                          Toast.fire({
+                            type: 'success',
+                            title: 'Mantap !! Data Berhasil Disimpan'
+                          });
+                        }); 
+                          </script>";
+                      
+                    }else if($_GET['pesan'] == "fail"){
+                      echo "<script type='text/javascript'>
+                      $(function() {
+                       
+                        const Toast = Swal.mixin({
+                          toast: true,
+                          position: 'top-end',
+                          showConfirmButton: false,
+                          timer: 3000,
+                          timerProgressBar: true,
+                          onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                          }
+                        });
+                    
+                       
+                          Toast.fire({
+                            type: 'error',
+                            title: 'Data Gagal Disimpan'
+                          });
+                        }); 
+                          </script>";
+                     
+                    }else if($_GET['pesan'] == "unknown"){
+                      echo "<script type='text/javascript'>
+                      $(function() {
+                       
+                        const Toast = Swal.mixin({
+                          toast: true,
+                          position: 'top-end',
+                          showConfirmButton: false,
+                          timer: 3000,
+                          timerProgressBar: true,
+                          onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                          }
+                        });
+                    
+                       
+                          Toast.fire({
+                            type: 'error',
+                            title: 'Kode Barang tidak tersedia'
+                          });
+                        }); 
+                          </script>";
+                    }else if($_GET['pesan'] == "overstock"){
+                      echo "<script type='text/javascript'>
+                      $(function() {
+                       
+                        const Toast = Swal.mixin({
+                          toast: true,
+                          position: 'top-end',
+                          showConfirmButton: false,
+                          timer: 3000,
+                          timerProgressBar: true,
+                          onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                          }
+                        });
+                    
+                       
+                          Toast.fire({
+                            type: 'warning',
+                            title: 'Qty lebih besar dari inventory !! !!'
+                          });
+                        }); 
+                          </script>";
+                    }else if($_GET['pesan'] == "success-hapus"){
+                      echo "<script type='text/javascript'>
+                      $(function() {
+                       
+                        const Toast = Swal.mixin({
+                          toast: true,
+                          position: 'top-end',
+                          showConfirmButton: false,
+                          timer: 3000,
+                          timerProgressBar: true,
+                          onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                          }
+                        });
+                    
+                       
+                          Toast.fire({
+                            type: 'success',
+                            title: 'Hapus data sukses'
+                          });
+                        }); 
+                          </script>";
+                    }else if($_GET['pesan'] == "gagal-hapus"){
+                      echo "<script type='text/javascript'>
+                      $(function() {
+                       
+                        const Toast = Swal.mixin({
+                          toast: true,
+                          position: 'top-end',
+                          showConfirmButton: false,
+                          timer: 3000,
+                          timerProgressBar: true,
+                          onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                          }
+                        });
+                    
+                       
+                          Toast.fire({
+                            type: 'error',
+                            title: 'Gagal hapus data.'
+                          });
+                        }); 
+                          </script>";
+                    }
+                  }
+                  ?>
+                
+
 <!-- page script -->
 <script>
   $(function () {

@@ -101,7 +101,7 @@
                    }
                     ?></td>
                     <td>
-                    <a href="pages/forms/inventory-update.php?id=<?php echo $d['id_barang']; ?>" class="btn btn-success btn-sm">
+                    <a href="../forms/inventory-update.php?id=<?php echo $d['id_barang']; ?>" class="btn btn-success btn-sm">
                               <i class="fas fa-pencil-alt">
                               </i>
                           </a>

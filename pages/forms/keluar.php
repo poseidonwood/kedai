@@ -8,6 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- DataTables -->
   <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="../../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
@@ -56,7 +58,7 @@
 
             <!-- Form Element sizes -->
             
-           <a href="#" class="btn btn-success " data-toggle="modal" data-target="#ltmodal" > <i class="fas fa-calendar"></i>&nbsp;Today</a>&nbsp;
+           <a href="#" class="btn btn-success " data-toggle="modal" data-target="#ltmodal" > <i class="fas fa-calendar"></i></a>&nbsp;
            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#ltbarang1"><i class="fas fa-shopping-cart"></i></a>&nbsp;
            <a href="#" class="btn btn-info" data-toggle="modal" data-target="#ltsortir"><i class="fas fa-sort"></i></a>
 
@@ -331,7 +333,7 @@
                   ?>
                   <tr>
                     <td><?php echo $no++; ?></td>
-                    <td><?php echo $d['id_barang']; ?></td>
+                    <td><?php echo $d['barcode']; ?></td>
                     <td><?php echo $d['nm_barang']; ?></td>
                     <td><?php echo $d['qty']; ?></td>
                     <td><?php echo $d['last_upt']; ?></td>
@@ -435,6 +437,154 @@
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- bs-custom-file-input -->
 <script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="../../plugins/sweetalert2/sweetalert2.min.js"></script>
+<!-- cek pesan notifikasi -->
+<?php 
+                  if(isset($_GET['pesan'])){
+                    if($_GET['pesan'] == "success"){
+                      echo "<script type='text/javascript'>
+                      $(function() {
+                       
+                        const Toast = Swal.mixin({
+                          toast: true,
+                          position: 'top-end',
+                          showConfirmButton: false,
+                          timer: 3000,
+                          timerProgressBar: true,
+                          onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                          }
+                        });
+                    
+                       
+                          Toast.fire({
+                            type: 'success',
+                            title: 'Mantap !! Data Berhasil Disimpan'
+                          });
+                        }); 
+                          </script>";
+                      
+                    }else if($_GET['pesan'] == "fail"){
+                      echo "<script type='text/javascript'>
+                      $(function() {
+                       
+                        const Toast = Swal.mixin({
+                          toast: true,
+                          position: 'top-end',
+                          showConfirmButton: false,
+                          timer: 3000,
+                          timerProgressBar: true,
+                          onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                          }
+                        });
+                    
+                       
+                          Toast.fire({
+                            type: 'error',
+                            title: 'Data Gagal Disimpan'
+                          });
+                        }); 
+                          </script>";
+                     
+                    }else if($_GET['pesan'] == "unknown"){
+                      echo "<script type='text/javascript'>
+                      $(function() {
+                       
+                        const Toast = Swal.mixin({
+                          toast: true,
+                          position: 'top-end',
+                          showConfirmButton: false,
+                          timer: 3000,
+                          timerProgressBar: true,
+                          onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                          }
+                        });
+                    
+                       
+                          Toast.fire({
+                            type: 'error',
+                            title: 'Kode Barang tidak tersedia'
+                          });
+                        }); 
+                          </script>";
+                    }else if($_GET['pesan'] == "overstock"){
+                      echo "<script type='text/javascript'>
+                      $(function() {
+                       
+                        const Toast = Swal.mixin({
+                          toast: true,
+                          position: 'top-end',
+                          showConfirmButton: false,
+                          timer: 3000,
+                          timerProgressBar: true,
+                          onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                          }
+                        });
+                    
+                       
+                          Toast.fire({
+                            type: 'warning',
+                            title: 'Qty lebih besar dari inventory !! !!'
+                          });
+                        }); 
+                          </script>";
+                    }else if($_GET['pesan'] == "success-hapus"){
+                      echo "<script type='text/javascript'>
+                      $(function() {
+                       
+                        const Toast = Swal.mixin({
+                          toast: true,
+                          position: 'top-end',
+                          showConfirmButton: false,
+                          timer: 3000,
+                          timerProgressBar: true,
+                          onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                          }
+                        });
+                    
+                       
+                          Toast.fire({
+                            type: 'success',
+                            title: 'Hapus data sukses'
+                          });
+                        }); 
+                          </script>";
+                    }else if($_GET['pesan'] == "gagal-hapus"){
+                      echo "<script type='text/javascript'>
+                      $(function() {
+                       
+                        const Toast = Swal.mixin({
+                          toast: true,
+                          position: 'top-end',
+                          showConfirmButton: false,
+                          timer: 3000,
+                          timerProgressBar: true,
+                          onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                          }
+                        });
+                    
+                       
+                          Toast.fire({
+                            type: 'error',
+                            title: 'Gagal hapus data.'
+                          });
+                        }); 
+                          </script>";
+                    }
+                  }
+                  ?>
 <!-- page script -->
 <script>
   $(function () {

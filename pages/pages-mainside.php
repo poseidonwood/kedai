@@ -66,6 +66,12 @@ include "../../koneksi.php"
               </p>
             </a>
             <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="https://<?= "$domain";?>pages/forms/transaksi.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Transaksi</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="https://<?= "$domain";?>pages/forms/keluar.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
