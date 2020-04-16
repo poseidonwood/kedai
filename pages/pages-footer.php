@@ -122,11 +122,11 @@ if($perangkat=="Komputer atau Notebook"){
                      ?></td>
                   
                   <td>
-                      <a href="pages/forms/inventory-update.php?id=<?php echo $d['id_barang']; ?>" class="btn btn-success btn-sm">
+                      <a href="<?=$domain;?>pages/forms/inventory-update.php?id=<?php echo $d['id_barang']; ?>" class="btn btn-success btn-sm">
                               <i class="fas fa-pencil-alt">
                               </i>
                           </a>
-                      <a href="proses/hapus-inventory.php?id=<?php echo $d['id_barang']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin mau menghapus item ini ?')">
+                      <a href="<?=$domain;?>proses/hapus-inventory.php?id=<?php echo $d['id_barang']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin mau menghapus item ini ?')">
                               <i class="fas fa-trash">
                               </i>
                           </a>

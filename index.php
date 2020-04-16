@@ -40,6 +40,38 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
+    <div class='alert alert-danger alert-dismissible'>
+<marquee> <strong> (
+<?php 
+                include 'setting/koneksi.php';
+                $data_alert = mysqli_query($koneksi,"select * from inventory where ket ='HABIS'");
+                while($d_habis = mysqli_fetch_array($data_alert)){
+                  $da_nm_barang = $d_habis['nm_barang'];
+
+                 echo $da_nm_barang.", ";
+                }
+    ?>
+) </strong> stok nya sudah habis . Harap restock sebelum ada customer yang beli produk tersebut.   </marquee>
+</div>
+
+     <?php 
+                include 'setting/koneksi.php';
+                $data_alert1 = mysqli_query($koneksi,"select count(*)  as total from inventory where ket ='MAU HABIS'");
+                while($d_habis1 = mysqli_fetch_array($data_alert1)){
+                  $da_total = $d_habis1['total'];
+
+                 echo" <div class='alert alert-warning alert-dismissible'>
+                 <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
+                 <h5><i class='icon fas fa-exclamation-triangle'></i> Alert!</h5>
+                 Ada <strong>$da_total</strong> stok yang mau habis . Harap cek qty real sebelum ada customer yang beli produk tersebut.
+   </div>
+   </div>";
+                }
+    ?>
+   
+    
+    <!-- /.content-header -->
+    <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">

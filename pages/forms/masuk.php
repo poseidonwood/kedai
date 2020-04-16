@@ -6,6 +6,9 @@
   <title>Kedai Bu Puji | Form Barang Masuk</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- SweetAlert2 -->
+      <link rel="stylesheet" href="../../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+
   <!-- DataTables -->
   <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.css">
   <script src="jquery-3.1.1.min.js" type="text/javascript"></script>
@@ -112,40 +115,7 @@ $(document).ready(function(){
               <div class="card-body">
                 <div class="tab-content" id="custom-tabs-one-tabContent">
                   <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
-  <!-- cek pesan notifikasi -->
-  <?php 
-                  if(isset($_GET['pesan'])){
-                    if($_GET['pesan'] == "success"){
-                      echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-                      <strong>Mantap !!</strong> Data Berhasil Disimpan
-                      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                        <span aria-hidden='true'>&times;</span>
-                      </button>
-                    </div>";
-                    }else if($_GET['pesan'] == "fail"){
-                      echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                      <strong>Gagal !!</strong> Data Gagal Disimpan
-                      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                        <span aria-hidden='true'>&times;</span>
-                      </button>
-                    </div>";
-                    }else if($_GET['pesan'] == "unknown"){
-                      echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-                      <strong>Kode Barang</strong> tidak di temukan !!
-                      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                        <span aria-hidden='true'>&times;</span>
-                      </button>
-                    </div>";
-                    }else if($_GET['pesan'] == "overstock"){
-                      echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-                      <strong>Qty </strong> lebih besar dari inventory !! !!
-                      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                        <span aria-hidden='true'>&times;</span>
-                      </button>
-                    </div>";
-                    }
-                  }
-                  ?>
+  
                 
                 <h4></h4>
                 
@@ -250,41 +220,7 @@ $(document).ready(function(){
                 </form>
                   </div>
                   <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
- <!-- cek pesan notifikasi -->
- <?php 
-                  if(isset($_GET['pesan'])){
-                    if($_GET['pesan'] == "success"){
-                      echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-                      <strong>Mantap !!</strong> Data Berhasil Disimpan
-                      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                        <span aria-hidden='true'>&times;</span>
-                      </button>
-                    </div>";
-                    }else if($_GET['pesan'] == "fail"){
-                      echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                      <strong>Gagal !!</strong> Data Gagal Disimpan
-                      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                        <span aria-hidden='true'>&times;</span>
-                      </button>
-                    </div>";
-                    }else if($_GET['pesan'] == "unknown"){
-                      echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-                      <strong>Kode Barang</strong> tidak di temukan !!
-                      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                        <span aria-hidden='true'>&times;</span>
-                      </button>
-                    </div>";
-                    }else if($_GET['pesan'] == "overstock"){
-                      echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-                      <strong>Qty </strong> lebih besar dari inventory !! !!
-                      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                        <span aria-hidden='true'>&times;</span>
-                      </button>
-                    </div>";
-                    }
-                  }
-                  ?>
-                
+ 
                 <h4></h4>
                 
                 <form method="post" action="../../proses/proses-agen.php">
@@ -584,6 +520,154 @@ $(document).ready(function(){
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- bs-custom-file-input -->
 <script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="../../plugins/sweetalert2/sweetalert2.min.js"></script>
+<!-- cek pesan notifikasi -->
+<?php 
+                  if(isset($_GET['pesan'])){
+                    if($_GET['pesan'] == "success"){
+                      echo "<script type='text/javascript'>
+                      $(function() {
+                       
+                        const Toast = Swal.mixin({
+                          toast: true,
+                          position: 'top',
+                          showConfirmButton: false,
+                          timer: 3000,
+                          timerProgressBar: true,
+                          onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                          }
+                        });
+                    
+                       
+                          Toast.fire({
+                            type: 'success',
+                            title: 'Mantap !! Data Berhasil Disimpan'
+                          });
+                        }); 
+                          </script>";
+                      
+                    }else if($_GET['pesan'] == "fail"){
+                      echo "<script type='text/javascript'>
+                      $(function() {
+                       
+                        const Toast = Swal.mixin({
+                          toast: true,
+                          position: 'top',
+                          showConfirmButton: false,
+                          timer: 3000,
+                          timerProgressBar: true,
+                          onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                          }
+                        });
+                    
+                       
+                          Toast.fire({
+                            type: 'error',
+                            title: 'Data Gagal Disimpan'
+                          });
+                        }); 
+                          </script>";
+                     
+                    }else if($_GET['pesan'] == "unknown"){
+                      echo "<script type='text/javascript'>
+                      $(function() {
+                       
+                        const Toast = Swal.mixin({
+                          toast: true,
+                          position: 'top',
+                          showConfirmButton: false,
+                          timer: 3000,
+                          timerProgressBar: true,
+                          onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                          }
+                        });
+                    
+                       
+                          Toast.fire({
+                            type: 'error',
+                            title: 'Kode Barang tidak tersedia'
+                          });
+                        }); 
+                          </script>";
+                    }else if($_GET['pesan'] == "overstock"){
+                      echo "<script type='text/javascript'>
+                      $(function() {
+                       
+                        const Toast = Swal.mixin({
+                          toast: true,
+                          position: 'top',
+                          showConfirmButton: false,
+                          timer: 3000,
+                          timerProgressBar: true,
+                          onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                          }
+                        });
+                    
+                       
+                          Toast.fire({
+                            type: 'warning',
+                            title: 'Qty lebih besar dari inventory !! !!'
+                          });
+                        }); 
+                          </script>";
+                    }else if($_GET['pesan'] == "success-hapus"){
+                      echo "<script type='text/javascript'>
+                      $(function() {
+                       
+                        const Toast = Swal.mixin({
+                          toast: true,
+                          position: 'top',
+                          showConfirmButton: false,
+                          timer: 3000,
+                          timerProgressBar: true,
+                          onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                          }
+                        });
+                    
+                       
+                          Toast.fire({
+                            type: 'success',
+                            title: 'Hapus data sukses'
+                          });
+                        }); 
+                          </script>";
+                    }else if($_GET['pesan'] == "gagal-hapus"){
+                      echo "<script type='text/javascript'>
+                      $(function() {
+                       
+                        const Toast = Swal.mixin({
+                          toast: true,
+                          position: 'top',
+                          showConfirmButton: false,
+                          timer: 3000,
+                          timerProgressBar: true,
+                          onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                          }
+                        });
+                    
+                       
+                          Toast.fire({
+                            type: 'error',
+                            title: 'Gagal hapus data.'
+                          });
+                        }); 
+                          </script>";
+                    }
+                  }
+                  ?>
 <!-- page script -->
 <script>
   $(function () {

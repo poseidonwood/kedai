@@ -40,7 +40,11 @@ if($cek > 0){
      
       //update saldo baru
       $update_saldo = mysqli_query($koneksi,"update tbl_saldo set total_saldo = '$saldo_akhir' where id_saldo = '1'");
-        // menginput data ke database
+   //simpan ke tbl_log
+   $simpan_log = mysqli_query($koneksi,"insert into tbl_log values(
+    '$timestamps','$id_transaksi','$tanggal','$jenis_transaksi','$nm_pembeli','$id_barang','$nm_barang','$qty','$harga_beli','','')");
+
+      // menginput data ke database
     $data_stok = mysqli_query($koneksi,"select * from inventory where id_barang='$id_barang'");
     $sto    =mysqli_fetch_array($data_stok);
     $stok = $sto['qty'];

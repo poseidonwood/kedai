@@ -43,7 +43,9 @@ if($cek > 0){
    
 
     if($simpan){
-         
+        $simpan_log = mysqli_query($koneksi,"insert into tbl_log values(
+            '$timestamps','$id_transaksi','$tanggal','$jenis_transaksi','$nm_pembeli','$nm_barang','$nm_barang1','$qty','$harga','','')");
+        
             //cek saldo 
             $query_saldo = mysqli_query($koneksi,"select *from tbl_saldo");
             $fetch_saldo = mysqli_fetch_array($query_saldo);

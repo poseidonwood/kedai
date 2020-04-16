@@ -70,55 +70,7 @@
               </div>
               <div class="card-body">
 
-              <!-- cek pesan notifikasi -->
-                  <?php 
-                  if(isset($_GET['pesan'])){
-                    if($_GET['pesan'] == "success"){
-                      echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-                      <strong>Mantap !!</strong> Data Berhasil Disimpan
-                      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                        <span aria-hidden='true'>&times;</span>
-                      </button>
-                    </div>";
-                    }else if($_GET['pesan'] == "fail"){
-                      echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                      <strong>Gagal !!</strong> Data Gagal Disimpan
-                      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                        <span aria-hidden='true'>&times;</span>
-                      </button>
-                    </div>";
-                    }else if($_GET['pesan'] == "unknown"){
-                      echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-                      <strong>Kode Barang</strong> tidak di temukan !!
-                      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                        <span aria-hidden='true'>&times;</span>
-                      </button>
-                    </div>";
-                    }else if($_GET['pesan'] == "overstock"){
-                      echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-                      <strong>Qty </strong> lebih besar dari inventory !! !!
-                      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                        <span aria-hidden='true'>&times;</span>
-                      </button>
-                    </div>";
-                    }else if($_GET['pesan'] == "success-hapus"){
-                      echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-                      <strong>Hapus </strong> data sukses !!
-                      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                        <span aria-hidden='true'>&times;</span>
-                      </button>
-                    </div>";
-                    }else if($_GET['pesan'] == "gagal-hapus"){
-                      echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-                      <strong>Gagal  </strong> hapus data !!
-                      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                        <span aria-hidden='true'>&times;</span>
-                      </button>
-                    </div>";
-                    }
-                  }
-                  ?>
-                
+             
                 <h4></h4>
                 
                 <form method="post" action="../../proses/proses-keluar.php">

@@ -55,8 +55,16 @@ include "../../koneksi.php"
               </li>
             </ul>-->
           </li>
-          
-         
+         <!-- <li class="nav-item has-treeview">
+            <a href="<?=$domain;?>pages/tables/timeline.php" class="nav-link">
+              <i class="nav-icon fas fa-history"></i>
+              <p>
+                Timeline
+              </p>
+            </a>
+            
+          </li>
+         -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
@@ -67,19 +75,19 @@ include "../../koneksi.php"
             </a>
             <ul class="nav nav-treeview">
             <li class="nav-item">
-                <a href="https://<?= "$domain";?>pages/forms/transaksi.php" class="nav-link">
+                <a href="<?= "$domain";?>pages/forms/transaksi.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Transaksi</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="https://<?= "$domain";?>pages/forms/keluar.php" class="nav-link">
+                <a href="<?= "$domain";?>pages/forms/keluar.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Barang Keluar</p>
                 </a>
               </li>
               <li class="nav-item">
-              <a href="https://<?= "$domain";?>pages/forms/masuk.php" class="nav-link">
+              <a href="<?= "$domain";?>pages/forms/masuk.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Barang Masuk</p>
                 </a>
@@ -97,7 +105,7 @@ include "../../koneksi.php"
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="https://<?= "$domain";?>pages/tables/inventory.php" class="nav-link">
+                <a href="<?= "$domain";?>pages/tables/inventory.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Inventory</p>
                 </a>

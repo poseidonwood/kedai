@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link">
+    <a href="<?=$domain;?>" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Kedai Bu Puji</span>
@@ -52,7 +52,15 @@
               </li>
             </ul>-->
           </li>
-          
+        <!--  <li class="nav-item has-treeview">
+            <a href="<?=$domain;?>pages/tables/timeline.php" class="nav-link">
+              <i class="nav-icon fas fa-history"></i>
+              <p>
+                Timeline
+              </p>
+            </a>
+            
+          </li>-->
          
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
