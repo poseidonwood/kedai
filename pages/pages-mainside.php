@@ -66,10 +66,10 @@ include "../../koneksi.php"
           </li>
          -->
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
+          <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-exchange-alt"></i>
               <p>
-                Forms
+                Keluar - Masuk 
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>

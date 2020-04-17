@@ -67,7 +67,10 @@ if($cek > 0){
         '$id_barang','','$nm_barang','$qty','$harga_beli_satuan','$harga_beli','$harga_jual','$exp','$timestamps','')");
     $simpan01 = mysqli_query($koneksi,"insert into transaksi values(
             '$timestamps','$id_transaksi','$tanggal','$jenis_transaksi','$nm_pembeli','$id_barang','$nm_barang','$qty','$harga_beli','','','$keterangan')");
-         //cek saldo 
+    $simpan_log = mysqli_query($koneksi,"insert into tbl_log values(
+            '$timestamps','$id_transaksi','$tanggal','$jenis_transaksi','$nm_pembeli','$id_barang','$nm_barang','$qty','$harga_beli','','')");
+            
+            //cek saldo 
          $query_saldo = mysqli_query($koneksi,"select *from tbl_saldo");
          $fetch_saldo = mysqli_fetch_array($query_saldo);
          $saldo_awal = $fetch_saldo['total_saldo'];

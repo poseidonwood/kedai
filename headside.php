@@ -167,6 +167,23 @@ include "setting/koneksi.php";
           <div class="dropdown-divider"></div>
         </div>
       </li>
+       <!-- Notifications Dropdown Menu -->
+       <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="fas fa-sign-out-alt"></i>
+          
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+        
+          <div class="dropdown-divider"></div>
+          <a href="pages/login" class="dropdown-item">
+            <i class="fas fa-sign-out"></i>Sign Out
+          </a>
+         
+          <div class="dropdown-divider"></div>
+        
+        </div>
+      </li>
       <!--<li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
           <i class="fas fa-th-large"></i>

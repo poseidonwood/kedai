@@ -3,9 +3,11 @@
     <a href="<?=$domain;?>" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">Kedai Bu Puji</span>
-      
+      <span class="brand-text font-weight-light">Kedai Bu Puji </span> &nbsp;    
+     
     </a>
+  
+
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
@@ -64,9 +66,9 @@
          
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
+              <i class="nav-icon fas fa-exchange-alt"></i>
               <p>
-                Forms
+                Keluar - Masuk 
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
