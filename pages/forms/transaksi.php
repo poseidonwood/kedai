@@ -62,7 +62,7 @@
 
             <!-- Form Element sizes -->
             
-           <a href="#" class="btn btn-success " data-toggle="modal" data-target="#ltmodal" > <i class="fas fa-calendar"></i>&nbsp;Today</a>&nbsp;
+           <a href="#" class="btn btn-success " data-toggle="modal" data-target="#ltmodal" > <i class="fas fa-calendar"></i></a>&nbsp;
            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#ltbarang1"><i class="fas fa-shopping-cart"></i></a>&nbsp;
            <a href="#" class="btn btn-info" data-toggle="modal" data-target="#ltsortir"><i class="fas fa-sort"></i></a>
 
@@ -150,10 +150,10 @@
                   </div>
                   <input type="number" class="form-control" name ="harga" placeholder="Harga" required>
                 </div>-->
-                <div class="input-group mb-3">
+                </form>
                   
                  <!-- <button type="submit" name="tambah" class="btn btn-success"><span class="fas fa-plus"></span></button>&nbsp;-->
-                 </form>
+                
                  <form method="post" action="../../proses/proses-sementara-final.php" >
                 <div class="input-group mb-3 ">
                   <div class="input-group-prepend">
@@ -163,14 +163,9 @@
                   <button type="submit" name="save" class="input-group-text btn bg-success"><i class="fas fa-save"></i>&nbsp;FINISH </button>
                  <!-- <span class="input-group-text bg-success"><button type="submit" name="tambah" class="btn btn-success"></button></span>-->
                 </div>
-
-
-               </form>
+               </form>        
                 </div>
               
-                
-               
-
               <table id="example1" class="table table-bordered table-striped  text-nowrap">
                 <thead>
                 <tr>
@@ -229,13 +224,83 @@
                 }
                   ?>
                <tr>
-                  <td colspan="4"><strong>TOTAL BELANJA</strong></td>
-                  <td colspan ="2"><h2><strong>Rp. <?= number_format($s_total,0,',','.');?></strong></h2></td>
+                  <td colspan="4"><strong>TOTAL BELANJA</strong>
+                  <p><?php
+                 if (isset($_GET['result'])){
+                  if ($_GET['result']=="fail"){
+                  echo"<h5 class='text-danger'>Kupon tidak valid!</h5>";
+                 }elseif($_GET['result']=="expired"){
+                  echo"<h5 class='text-danger'>Maaf Kupon Anda Tidak Berlaku</h5>";
+                 }elseif($_GET['result']=="success"){
+                   //cari nilai
+                   $kode = $_GET['coupon'];
+                  $q_coupon = mysqli_query($koneksi,"select *from coupon where nm_coupon = '$kode'");
+                  $f_coupon = mysqli_fetch_array($q_coupon);
+                  $nilai = $f_coupon['nilai'];
+
+                  echo"<h5 class='text-info'>Anda mendapatkan potongan sebesar $nilai %</h5>";
+                 }
+                }
+                 ?>   </p></td>
+                  <td colspan ="2"><h3><strong>
+                  <?php
+                  if (isset($_GET['result'])){
+                    if ($_GET['result']=="success"){
+                      $coupon = $_GET['coupon'];
+                      $s_new_total = $s_total - ($s_total / 100 * $nilai);
+                      echo "<strike>";
+                      echo "Rp. "; 
+                    echo number_format($s_total,0,',','.');
+                    echo "</strike>";
+                    echo "</strong></h3>";
+
+                    echo "<p>"; 
+                    echo "<h2><strong>";
+                    echo "Rp. ";
+                    echo number_format($s_new_total,0,',','.');
+                    echo "</h2></strong>";
+                    echo "</p>";
+
+
+  
+                    }else{
+                      echo "Rp. ";
+                     echo number_format($s_total,0,',','.');
+                     echo "</strong></h2>";
+                    }
+                   }else{
+                    echo "Rp. ";
+                   echo number_format($s_total,0,',','.');
+                   echo "</strong></h2>";
+                  }
+                    
+                  ?>
+                  
+                  
+                  </td>
                   </tr>
                 
                 </tbody>    
              </table><br>
               
+             
+             <a  id="coupon_form_button" role="button" onclick="showCouponForm()">Punya kode kupon? Klik disini</a>
+                 <div class="input-group mb-3">
+                
+                 <div id="coupon_form" style="display:none;">
+                 <form method="post" action="<?=$domain;?>proses/check-coupon.php" role="form">
+                  
+                                <div class="input-group">    
+                                            <input type="text" class="form-control" placeholder="Masukkan kupon" name="coupon" required>
+                                            <div class="input-group-append">
+                                            <button type="submit" name="save" class="input-group-text btn bg-primary"><i class="fas fa-tags"></i>&nbsp;Gunakan </button>
+                                            </div>
+                                </div>        
+                                    </div>
+                                    </form>
+                </div>
+               
+
             </div>
 
               <!-- /.card-body -->
@@ -651,6 +716,12 @@
 $(document).ready(function () {
   bsCustomFileInput.init();
 });
+</script>
+<script type="text/javascript">
+    function showCouponForm() {
+        document.getElementById('coupon_form').style.display = "inline";
+        document.getElementById('coupon_form_button').style.display = "none";
+    }
 </script>
 </body>
 </html>
