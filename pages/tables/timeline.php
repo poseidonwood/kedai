@@ -48,7 +48,7 @@
           <div class='timeline'>
             <?php
             include "../../setting/waktu_sekarang.php";
-            $q_log = mysqli_query($koneksi,"select tanggal, count(tanggal) as pembelian from tbl_log where jenis_transaksi ='Keluar' or jenis_transaksi='Masuk' or jenis_transaksi='Edit' or jenis_transaksi ='Hapus' group by tanggal ORDER BY timestamps desc");
+            $q_log = mysqli_query($koneksi,"select tanggal, count(tanggal) as pembelian from tbl_log where jenis_transaksi ='Keluar' or jenis_transaksi='Masuk' or jenis_transaksi='Edit' or jenis_transaksi ='Hapus' group by tanggal ORDER BY tanggal desc");
             while($f_log=mysqli_fetch_array($q_log)){
                 $f_tanggal0 = $f_log['tanggal'];
                 $f_tanggal = date_create($f_log['tanggal']);
